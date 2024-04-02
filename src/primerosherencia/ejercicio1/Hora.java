@@ -44,6 +44,7 @@ public class Hora {
 		return asignar;
 	}
 	
+	@Override
 	public String toString() {
 		String mostrar="";
 		
