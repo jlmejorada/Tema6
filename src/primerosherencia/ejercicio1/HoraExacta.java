@@ -29,4 +29,23 @@ public class HoraExacta extends Hora{
 			super.inc();
 		}
 	}
+	
+	@Override
+	public String toString() {
+		String mostrar="";
+		
+		if (hora<10) {
+			mostrar += 0 + this.hora + ":";
+		} else mostrar += this.hora + ":";
+		
+		if (minuto<10) {
+			mostrar += 0 + this.minuto;
+		} else mostrar += this.minuto;		
+		
+		if (segundo<10) {
+			mostrar += 0 + this.segundo;
+		} else mostrar += this.segundo;	
+		
+		return mostrar;
+	}
 }
