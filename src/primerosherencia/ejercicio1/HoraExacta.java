@@ -39,8 +39,8 @@ public class HoraExacta extends Hora{
 		} else mostrar += this.hora + ":";
 		
 		if (minuto<10) {
-			mostrar += 0 + this.minuto;
-		} else mostrar += this.minuto;		
+			mostrar += 0 + this.minuto + ":";
+		} else mostrar += this.minuto + ":";		
 		
 		if (segundo<10) {
 			mostrar += 0 + this.segundo;
