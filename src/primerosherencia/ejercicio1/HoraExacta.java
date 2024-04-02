@@ -35,15 +35,15 @@ public class HoraExacta extends Hora{
 		String mostrar="";
 		
 		if (hora<10) {
-			mostrar += 0 + this.hora + ":";
+			mostrar += "0" + this.hora + ":";
 		} else mostrar += this.hora + ":";
 		
 		if (minuto<10) {
-			mostrar += 0 + this.minuto + ":";
+			mostrar += "0" + this.minuto + ":";
 		} else mostrar += this.minuto + ":";		
 		
 		if (segundo<10) {
-			mostrar += 0 + this.segundo;
+			mostrar += "0" + this.segundo;
 		} else mostrar += this.segundo;	
 		
 		return mostrar;
