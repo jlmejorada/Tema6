@@ -25,9 +25,18 @@ public class Electrodomestico {
 	protected float precioBase;
 	
 	/**
-	 * Inicalizamos el color en blanco por defecto
+	 * Inicalizamos el consumo energetico en F por defecto
 	 */
 	protected consumoEnergetico tipo = consumoEnergetico.F;
-	
+
+	/**
+	 * Inicalizamos el color en blanco por defecto
+	 */
 	protected colores color = colores.blanco;
+
+
+	protected float precioBase = 100;
+
+
+
 }
