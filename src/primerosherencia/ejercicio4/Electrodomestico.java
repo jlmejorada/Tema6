@@ -66,12 +66,11 @@ public class Electrodomestico {
 	}
 
 	//TENGO DUDAS DE COMO HACER ESTE CONSTRUCTOR Y DE SI SE HA HECHO BIEN
-	public Electrodomestico(float precioBase, primerosherencia.ejercicio4.Electrodomestico.consumoEnergetico tipo,
-							primerosherencia.ejercicio4.Electrodomestico.colores color, float precio, float peso) {
+	public Electrodomestico(float precioBase, Electrodomestico.consumoEnergetico tipo,
+							Electrodomestico.colores color, float precio, float peso) {
 		boolean esCorrecto= false;
 		this.precioBase = precioBase;
-
-		this.tipo = tipo;
+		comprobarConsumoEnergetico(tipo);
 		this.color = color;
 		this.precio = precio;
 		this.peso = peso;
@@ -81,11 +80,11 @@ public class Electrodomestico {
 		return precioBase;
 	}
 
-	public primerosherencia.ejercicio4.Electrodomestico.consumoEnergetico getTipo() {
+	public Electrodomestico.consumoEnergetico getTipo() {
 		return tipo;
 	}
 
-	public primerosherencia.ejercicio4.Electrodomestico.colores getColor() {
+	public Electrodomestico.colores getColor() {
 		return color;
 	}
 
@@ -95,6 +94,10 @@ public class Electrodomestico {
 
 	public float getPeso() {
 		return peso;
+	}
+	
+	private void comprobarConsumoEnergetico(consumoEnergetico tipo) {
+		
 	}
 
 
