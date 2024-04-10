@@ -15,12 +15,17 @@ public abstract class Poligono {
 
 	@Override
 	public String toString() {
-		String lados="";
-		lados+=numeroLados;
+		String lados="Numero de lados: ";
+		lados+=numeroLados + "\n";
+		if (numeroLados == 2) {
+			lados += "El Poligono de un Rectangulo:" + "\n";
+		} else if (numeroLados == 3) {
+			lados += "El Poligono es un Triangulo:" + "\n";
+		}
 		return lados;
 	}
 	
 	
 	
-	 public abstract void area();
+	 public abstract double area();
 }
