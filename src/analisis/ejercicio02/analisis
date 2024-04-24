@@ -1,35 +1,48 @@
-Ficha
+abstract Ficha
 	- id int
 	- titulo String
 	-------------------
 	+ Ficha(id, titutlo)
-	+ abstract int prestamo();
-	+ getId()
+ + getId()
 	+ getTitulo()
-	+ setId(int)
-	+ setTitulo(int)
-
+	+ abstract int prestamo();
+	
 
 Libro extends Ficha
 	- autor String
 	- editorial String
 	--------------------
-	+ Ficha(id, titutlo, autor, editorial)
+	+ Libro(id, titutlo, autor, editorial)
+ + getAutor()
+ + getEditorial()
+ --------------------
+  heredados:
+         int prestamo()
 
 
 Revista extends Ficha
 	- numero int
 	- publicacion int
 	---------------------
-	+ Ficha(id, titutlo, numero, publicacion)
+	+ Revista(id, titutlo, numero, publicacion)
+ + getNumero()
+ + getPublicacion()
+ --------------------
+  heredados:
+         int prestamo()
 
 
 DVD extends Ficha
-enum TIPO (PELICULA, DOCUMENTAL, SERIE)
+enum TipoDVD {PELICULA, DOCUMENTAL, SERIE}
 	- director String
 	- año int
-	- tipo enum TIPO
+	- tipo enum TipoDVD
 	---------------------
-	+ Ficha(id, titutlo, director, año, tipo)
-
+	+ DVD(id, titutlo, director, año, tipo)
+ + getDirector()
+ + getAño()
+ + getTipo()
+ --------------------
+  heredados:
+         int prestamo()
 
