@@ -1,0 +1,35 @@
+Ficha
+	- id int
+	- titulo String
+	-------------------
+	+ Ficha(id, titutlo)
+	+ abstract int prestamo();
+	+ getId()
+	+ getTitulo()
+	+ setId(int)
+	+ setTitulo(int)
+
+
+Libro extends Ficha
+	- autor String
+	- editorial String
+	--------------------
+	+ Ficha(id, titutlo, autor, editorial)
+
+
+Revista extends Ficha
+	- numero int
+	- publicacion int
+	---------------------
+	+ Ficha(id, titutlo, numero, publicacion)
+
+
+DVD extends Ficha
+enum TIPO (PELICULA, DOCUMENTAL, SERIE)
+	- director String
+	- año int
+	- tipo enum TIPO
+	---------------------
+	+ Ficha(id, titutlo, director, año, tipo)
+
+
