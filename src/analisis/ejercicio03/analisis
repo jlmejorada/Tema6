@@ -1,4 +1,34 @@
 Cuenta
-	numCuenta int
-	saldo double
+	- numCuenta int
+	- saldo double
+	- titulares: Titular[3]
+	Titular:{ dni String
+			  nombre String
+			  apellidos String
+			  telefono int
+	}
+	-----------------------------
+	boolean ingresar(int)
+	boolean retirar(int)
+	boolean añadir(String)
+	boolean eliminar(String)
 	
+CuentaAhorro extends cuenta
+	MANTENIMIENTO double
+	INTERES double
+	-----------------------------
+	aplicarInteres()
+	restarMantenimiento()
+
+CuentaCorriente	extends cuenta
+	porcentajeTran double
+	numeroTran int
+	Transacion:{ dia int
+			     mes int
+			     año int
+			     concepto String
+			     importe double
+	}
+	-----------------------------
+	transaccion()
+	movimiento()
