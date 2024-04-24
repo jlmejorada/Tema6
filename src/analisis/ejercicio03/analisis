@@ -1,1 +1,4 @@
-ejercicio''1
+Cuenta
+	numCuenta int
+	saldo double
+	
