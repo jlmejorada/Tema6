@@ -1,1 +1,27 @@
-Ejericico
+Agenda
+	- nombre String
+	- telefono int
+	---------------------------
+	+ Agenda (telefono)
+	+ Agenda (nombre, telefono)
+	+ getNombre()
+	+ getTelefono()
+	+ setNombre(String)
+	+ setTelefono(String)
+	+ equals(obj)
+	
+Persona
+	- cumpleaños String
+	----------------------------------------
+	+ Persona (nombre, telefono, cumpleaños)
+	+ getCumpleaños()
+	+ setCumpleaños(String)
+
+Empresa
+	- pagina String
+	---------------------------------------
+	+ Empresa (telefono, pagina)
+	+ Empresa (nombre, telefono, pagina)
+	+ getPagina()
+	+ setPagina(String)
+
