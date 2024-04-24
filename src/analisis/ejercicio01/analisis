@@ -1,29 +1,34 @@
 Vehiculo
-	- marca
-	- modelo
-	- color
-	- matricula
+	- marca String
+	- modelo String
+	- color String
+	- matricula String
 	+ estaEncendido boolean
-	+ marcha int
-	+ velocidad double
+	+ marcha int = 0
+	+ velocidad double = 0
 	----------------------------------------
-	+ boolean parar()
+	+ void parar()
 	+ boolean arrancar()
-	+ void subirMarcha()
-	+ void bajarMarcha()
-	+ void cambiaVelocidad(int cuantaVelocidad, int tiempo)
+ + void acelerar(double velocidad)
+ + void frenar()
+	- void subirMarcha()
+	- void bajarMarcha()
+ + Vehículo (marca, modelo, color, matrícula)
+ + setMarcha(int marcha)
+ + setMotor(boolean motor)
 	
 
 Turismo extends Vehiculo
 	Tipo {profesional, particular}
 	- plazas int
 	- tipoUso enum Tipo
+ + Vehículo (marca, modelo, color, matrícula, plazas, tipoUso)
 
 
 Camion extends Vehiculo
 	- pesoMax double
 	- mercanciaPel boolean
-
+ + Vehículo (marca, modelo, color, matrícula, pesoMax, mercanciaPel)
 
 Motocicleta extends Vehiculo
 	- cilindrada int
