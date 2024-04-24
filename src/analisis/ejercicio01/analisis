@@ -18,58 +18,12 @@ Turismo extends Vehiculo
 	Tipo {profesional, particular}
 	- plazas int
 	- tipoUso enum Tipo
-    -------------------------------------
-	heredados:
-		- marca
-		- modelo
-		- color
-		- matricula
-		+ estaEncendido boolean
-		+ marcha int
-		+ velocidad double
-			-----------------------------
-			+ boolean parar()
-			+ boolean arrancar()
-			+ void subirMarcha()
-			+ void bajarMarcha()
-			+ void cambiaVelocidad(int cuantaVelocidad, int tiempo)
 
 
 Camion extends Vehiculo
 	- pesoMax double
 	- mercanciaPel boolean
-    -------------------------------------
-	heredados:
-		- marca
-		- modelo
-		- color
-		- matricula
-		+ estaEncendido boolean
-		+ marcha int
-		+ velocidad double
-			-----------------------------
-			+ boolean parar()
-			+ boolean arrancar()
-			+ void subirMarcha()
-			+ void bajarMarcha()
-			+ void cambiaVelocidad(int cuantaVelocidad, int tiempo)
 
 
 Motocicleta extends Vehiculo
-	- cilindrada int 
-    -------------------------------------
-	+ boolean requiereCarnet (cilindrada)
-	heredados:
-		- marca
-		- modelo
-		- color
-		- matricula
-		+ estaEncendido boolean
-		+ marcha int
-		+ velocidad double
-			-----------------------------
-			+ boolean parar()
-			+ boolean arrancar()
-			+ void subirMarcha()
-			+ void bajarMarcha()
-			+ void cambiaVelocidad(int cuantaVelocidad, int tiempo)
+	- cilindrada int
