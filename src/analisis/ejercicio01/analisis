@@ -30,7 +30,9 @@ Camion extends Vehiculo
 	- mercanciaPel boolean
 	+ Vehículo (marca, modelo, color, matrícula, pesoMax, mercanciaPel)
 
+
 Motocicleta extends Vehiculo
 	- cilindrada int
 	+ Vehículo (marca, modelo, color, matrícula, cilindrada)
 	+ boolean tipoPermiso()
+
