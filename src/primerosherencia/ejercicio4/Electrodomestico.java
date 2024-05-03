@@ -1,104 +1,146 @@
 package primerosherencia.ejercicio4;
 
-/**
- * Clase que alamacena los atributos y metodos que tendran los electrodomesticos
- * @author jlmejorada
- */
-public class Electrodomestico {
-	/**
-	 * Atributo enumerado de la categoria según su cosumo energetico
-	 */
-	protected enum consumoEnergetico{
+public class Electrodomestico implements Comparable<Electrodomestico> {
+
+	enum Color {
+		BLANCO, NEGRO, ROJO, AZUL, GRIS
+	};
+
+	enum ConsumoEnergetico {
 		A, B, C, D, E, F
-	}
-	
-	/**
-	 * Atributo enumerado de los colores disponibles para los electrodomesticos
-	 */
-	protected enum colores{
-		blanco, negro, rojo, azul, gris
-	}
-	
-	/*
-	 * Atributo que almacena el precio base del producto
-	 */
-	protected float precioBase;
-	
-	/**
-	 * Inicalizamos el consumo energetico en F por defecto
-	 */
-	protected consumoEnergetico tipo = consumoEnergetico.F;
+	};
 
-	/**
-	 * Inicalizamos el color en blanco por defecto
-	 */
-	protected colores color = colores.blanco;
+	private Color color = Color.BLANCO;
 
-	/**
-	 *	Atributo que almacena el precio base de los electrodomesticos
-	 */
-	protected float precio = 100;
+	private ConsumoEnergetico consumo = ConsumoEnergetico.F;
 
-	/**
-	 * Atributo que almacena el peso base de los electrodomesticos
-	 */
-	protected float peso = 5;
+	protected double precioBase = 100;
 
-	/**
-	 * Constructor sin parametros
-	 */
+	private double peso = 5;
+
 	public Electrodomestico() {
-		super();
+
 	}
 
-	/**
-	 * Constructor con parametros precio y peso, que se asegura que el precio y el peso no es un número negativo
-	 * @param precio
-	 * @param peso
-	 */
-	public Electrodomestico(float precio, float peso) {
-		if (precio >0 ){
-			this.precio = precio;
+	public Electrodomestico(double precioBase, double peso) {
+		if (precioBase > 0) {
+			this.precioBase = precioBase;
 		}
-		if (peso > 0){
+		if (peso > 0) {
 			this.peso = peso;
 		}
 	}
 
-	//TENGO DUDAS DE COMO HACER ESTE CONSTRUCTOR Y DE SI SE HA HECHO BIEN
-	public Electrodomestico(float precioBase, Electrodomestico.consumoEnergetico tipo,
-							Electrodomestico.colores color, float precio, float peso) {
-		boolean esCorrecto= false;
-		this.precioBase = precioBase;
-		comprobarConsumoEnergetico(tipo);
-		this.color = color;
-		this.precio = precio;
-		this.peso = peso;
+	public Electrodomestico(String color, char consumo, double precioBase, double peso) {
+		if (precioBase > 0) {
+			this.precioBase = precioBase;
+		}
+		if (peso > 0) {
+			this.peso = peso;
+
+		}
+		comprobarCosumoEnergetico(consumo);
+		comprobarColor(color);
 	}
 
-	public float getPrecioBase() {
-		return precioBase;
-	}
-
-	public Electrodomestico.consumoEnergetico getTipo() {
-		return tipo;
-	}
-
-	public Electrodomestico.colores getColor() {
+	public Color getColor() {
 		return color;
 	}
 
-	public float getPrecio() {
-		return precio;
+	public ConsumoEnergetico getConsumo() {
+		return consumo;
 	}
 
-	public float getPeso() {
+	public double getPrecioBase() {
+		return precioBase;
+	}
+
+	public double getPeso() {
 		return peso;
 	}
+
+	public void comprobarCosumoEnergetico(char letra) {
+		String caracter = Character.toString(letra).toUpperCase();
+		try {
+			this.consumo = ConsumoEnergetico.valueOf(caracter);
+		} catch (IllegalArgumentException e) {
+			this.consumo = ConsumoEnergetico.F;
+		}
+
+	}
 	
-	private void comprobarConsumoEnergetico(consumoEnergetico tipo) {
+	public void comprobarColor(String color) {
+		try {
+			this.color = Color.valueOf(color.toUpperCase());
+		} catch (IllegalArgumentException e) {
+			this.color = Color.BLANCO;
+		}
+	}
+	
+	public void precioFinal() {
+		switch(consumo) {
+		case A ->{
+			this.precioBase+=100;
+		}
+		case B ->{
+			this.precioBase+=80;
+		}
+		case C ->{
+			this.precioBase+=60;
+		}
+		case D ->{
+			this.precioBase+=50;
+		}
+		case E ->{
+			this.precioBase+=30;
+		}
+		case F->{
+			this.precioBase+=10;
+		}
+		}
+		
+		if (this.peso>0 && this.peso<=19) {
+			this.precioBase+=10;
+		} else if (this.peso>=20 && this.peso<=49) {
+			this.precioBase+=50;
+		} else if (this.peso>=50 && this.peso<=79) {
+			this.precioBase+=80;
+		} else if (this.peso>80) {
+			this.precioBase+=100;
+		}
 		
 	}
 
+	@Override
+	public int compareTo(Electrodomestico el) {
+		int devuelve=0;
+		
+		if (this.precioBase<el.precioBase) {
+			devuelve = -1;
+		} else if (this.precioBase>el.precioBase) {
+			devuelve = 1;
+		}
+		
+		return devuelve;
+	}
 
+	@Override
+	public String toString() {
+		return "Electrodomestico [color=" + color + ", consumo=" + consumo + ", precioBase=" + precioBase + ", peso="
+				+ peso + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean esIgual=false;
+		Electrodomestico objeto = (Electrodomestico) obj;
+		if (this.peso == objeto.peso) {
+			esIgual=true;
+		}
+		
+		return esIgual;
+	}
+	
+	
+	
 }

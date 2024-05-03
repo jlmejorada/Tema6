@@ -2,29 +2,41 @@ package primerosherencia.ejercicio4;
 
 public class Lavadora extends Electrodomestico{
 
-	private float carga = 5;
+	private double carga=5;
 
 	public Lavadora() {
 		super();
 	}
 
-	public Lavadora(float precio, float peso) {
-		super(precio, peso);
+	public Lavadora(double precioBase, double peso) {
+		super(precioBase, peso);
 	}
 
-	public Lavadora(float precioBase, consumoEnergetico tipo, colores color, float precio, float peso, float carga) {
-		super(precioBase, tipo, color, precio, peso);
-		this.carga = carga;
+	public Lavadora(String color, char consumo, double precioBase, double peso, double carga) {
+		super(color, consumo, precioBase, peso);
+		if (carga>0) {
+			this.carga = carga;			
+		}
 	}
 
-	public float getCarga() {
+	public double getCarga() {
 		return carga;
 	}
 	
-	//Estoy perdidisimo
-	private void precioFinal() {
-		
+	@Override
+	public void precioFinal() {
+		super.precioFinal();
+		if (this.carga>30) {
+			super.precioBase+=50;
+		}
+	}
+
+	@Override
+	public String toString() {
+		String res=super.toString();
+		res+="Lavadora [carga=" + carga + "]";
+		return res;
 	}
 	
-
+	
 }
