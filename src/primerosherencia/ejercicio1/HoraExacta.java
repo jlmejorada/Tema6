@@ -1,51 +1,51 @@
 package primerosherencia.ejercicio1;
 
-public class HoraExacta extends Hora{
+/**
+ * Clase hora exacta, que hereda de hora, añadiendo los segundos
+ */
+public class HoraExacta extends Hora {
+	
+	/**
+	 * Atributo que recoge los segundos
+	 */
+	private int segundos=0;
 
-	private int segundo;
-	
-	public HoraExacta(int hora, int minuto, int segundo) {
-		super(hora, minuto);
-		
-		if (segundo >= 0 && segundo < 60) {
-			this.segundo = segundo;
+	/**
+	 * Constructor con parametros que construye una hora exacta, a traves de las horas, minuots y segundos
+	 * @param horas Hora usada para crear el objeto HoraExacta
+	 * @param minutos Minutos usados para crear el objeto HoraExacta
+	 * @param segundos Segundos usados para crear el objeto HoraExacta
+	 */
+	public HoraExacta(int horas, int minutos, int segundos) {
+		//Llamamos al constructor de la superclase
+		super(horas, minutos);
+		if (segundos>-1&&segundos<60) {
+			this.segundos = segundos;
 		}
-		
 	}
 	
-	boolean setSegundo(int valor) {
-		boolean asignado=false;
-		if (valor >= 0 && valor < 24) {
-			this.hora = valor;
-			asignado=true;
-		}
-		return asignado;
-	}
-	
+	/**
+	 * Metodo que incrementa la hora en un segundo
+	 */
 	void inc() {
-		segundo++;
-		if (segundo==60) {
-			segundo=0;
+		this.segundos++;
+		if (segundos==60) {
+			segundos=0;
 			super.inc();
 		}
 	}
 	
+	/**
+	 * Metodo que sustituye el metodo toString de la clase, devolviendo las horas, los minutos y los segundos
+	 */
 	@Override
 	public String toString() {
-		String mostrar="";
-		
-		if (hora<10) {
-			mostrar += "0" + this.hora + ":";
-		} else mostrar += this.hora + ":";
-		
-		if (minuto<10) {
-			mostrar += "0" + this.minuto + ":";
-		} else mostrar += this.minuto + ":";		
-		
-		if (segundo<10) {
-			mostrar += "0" + this.segundo;
-		} else mostrar += this.segundo;	
-		
-		return mostrar;
+		String res=super.toString() + ":";
+		if (this.segundos<10) {
+			res += 0;
+		}
+		res += this.segundos;
+		return res;
 	}
+
 }

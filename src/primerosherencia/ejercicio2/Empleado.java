@@ -5,12 +5,11 @@ public class Empleado {
 	private String nombre="";
 
 	public Empleado() {
-		
 	}
-
+	
 	public Empleado(String nombre) {
-		if (!nombre.equals("")) {
-		this.nombre = nombre;
+		if (nombre!=null && !nombre.equals("")) {
+			this.nombre = nombre;
 		}
 	}
 
@@ -19,9 +18,9 @@ public class Empleado {
 	}
 
 	public void setNombre(String nombre) {
-		if (!nombre.equals("")) {
+		if (nombre!=null && !nombre.equals("")) {
 			this.nombre = nombre;
-			}
+		}
 	}
 	
 	@Override
@@ -30,10 +29,4 @@ public class Empleado {
 		return res;
 	}
 	
-	
-	
-	
-	
-	
-
 }

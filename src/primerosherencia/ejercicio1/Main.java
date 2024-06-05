@@ -3,23 +3,25 @@ package primerosherencia.ejercicio1;
 public class Main {
 
 	public static void main(String[] args) {
-		int hora=3;
-		 
-		int minuto=55;
 		
-		int segundo=59;
+		Hora h1 = new Hora(23,59);
 		
-		Hora hr = new Hora(hora, minuto);
+		System.out.println(h1);
 		
-		hr.inc();
+		h1.inc();
 		
-		System.out.println(hr);
+		System.out.println(h1);
 		
-		/*HoraExacta he = new HoraExacta(hora, minuto, segundo);
+		System.out.println("Cambio a Hora exacta");
 		
-		he.inc();*/
+		Hora h2 = new HoraExacta(23, 59, 59);
 		
-		//System.out.println(he);
+		System.out.println(h2);
+		
+		h2.inc();
+		
+		System.out.println(h2);
+
 	}
 
 }

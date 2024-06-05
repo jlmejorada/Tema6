@@ -1,62 +1,89 @@
 package primerosherencia.ejercicio1;
 
+/**
+ * Clase que representa un instante de tiempo compuesta por hora y minutos
+ */
 public class Hora {
 
-	protected int hora;
+	/**
+	 * Atributo que recoge la hora
+	 */
+	private int horas=0;
+	
+	/**
+	 * Atributo que recoge los minutos
+	 */
+	private int minutos=0;
 
-	protected int minuto;
-
-	public Hora(int hora, int minuto) {
-		if (hora >= 0 && hora < 24) {
-			this.hora = hora;
+	/**
+	 * Constructor que crea una hora, a traves de las horas y minutos pasados por parametros
+	 * @param hora Hora usada para crear el objeto Hora
+	 * @param minuto Minutos usados para crear el objeto Hora
+	 */
+	public Hora(int horas, int minutos) {
+		if (horas>=0 && horas<=23) {
+			this.horas = horas;	
 		}
-		if (minuto >= 0 && minuto < 60) {
-			this.minuto = minuto;
+		if (minutos>-1 && minutos<60) {
+			this.minutos = minutos;
 		}
 	}
 	
+	/**
+	 * Setter que se fija si la hora a introducir esta en el rango para cambiarlo
+	 * @param horas Recibe como parametro la hora a cambiar
+	 * @return Devuelve si la operación ha sido valida o no
+	 */
+	public boolean setHoras(int horas) {
+		boolean valido=false;
+		if (horas>=0 && horas<=23) {
+			this.horas = horas;	
+		}
+		return valido;
+	}
+
+	/**
+	 * Setter que se fija si los minutos a introducir estan en el rango para cambiarlo
+	 * @param minutos Recibe como parametro los minutos a cambiar
+	 * @return Devuelve si la operación ha sido valida o no
+	 */
+	public boolean setMinutos(int minutos) {
+		boolean valido=false;
+		if (minutos>-1 && minutos<60) {
+			this.minutos = minutos;
+		}
+		return valido;
+	}
+
+	/**
+	 * Metodo que incrementa la hora en un minuto
+	 */
 	void inc() {
-		minuto++;
-		if (minuto==60) {
-			minuto=0;
-			hora++;
+		this.minutos++;
+		if (minutos==60) {
+			minutos=0;
+			horas++;
 		}
-		if (hora==24) {
-			hora=0;
+		if (horas==24) {
+			horas=0;
 		}
 	}
 	
-	boolean setMinutos(int valor) {
-		boolean asignar=false;
-		if (valor >= 0 && valor < 60) {
-			this.minuto = valor;
-			asignar=true;
-		}
-		return asignar;
-	}
-	
-	boolean setHoras(int valor) {
-		boolean asignar=false;
-		if (valor >= 0 && valor < 24) {
-			this.hora = valor;
-			asignar=true;
-		}
-		return asignar;
-	}
-	
+	/**
+	 * Metodo que sustituye el metodo toString de la clase, devolviendo las horas y los minutos
+	 */
 	@Override
 	public String toString() {
-		String mostrar="";
-		
-		if (hora<10) {
-			mostrar += "0" + this.hora + ":";
-		} else mostrar += this.hora + ":";
-		
-		if (minuto<10) {
-			mostrar += "0" + this.minuto;
-		} else mostrar += this.minuto;		
-		
-		return mostrar;
+		String res="";
+		if (this.horas<10) {
+			res += 0;
+		}
+		res += this.horas + ":";
+		if (this.minutos<10) {
+			res += 0;
+		}
+		res += this.minutos;
+		return res;
 	}
 	
 	
