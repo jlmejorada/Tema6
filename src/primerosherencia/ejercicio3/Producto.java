@@ -2,42 +2,46 @@ package primerosherencia.ejercicio3;
 
 public class Producto {
 
-	protected String nombre="";
+	private String nombre="";
 	
-	protected double precio=0;
+	private double precio=0;
 
 	public Producto(String nombre, double precio) {
 		if (nombre!=null && !nombre.equals("")) {
-			this.nombre = nombre;			
+			this.nombre = nombre;
 		}
 		if (precio>0) {
-			this.precio = precio;			
+			this.precio = precio;
 		}
 	}
 
 	public double getPrecio() {
-		return this.precio;
+		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(double precio) {
 		if (precio>0) {
-			this.precio = precio;			
+			this.precio = precio;
 		}
 	}
 
 	public String getNombre() {
-		return this.nombre;
-	} 
+		return nombre;
+	}
 	
-	@Override
-	public String toString() {
-		String res=this.nombre + ": " + this.precio + "€";
+	public double calcular(int cantidad) {
+		double res=0;
+		res=this.precio*(double)cantidad;
 		return res;
 	}
 	
-	public double calcular(int productos) {
-		double precioFinal=this.precio*productos;
-		return precioFinal;
+	@Override
+	public String toString() {
+		String res="";
+		res+="Nombre: " + this.nombre + "\n";
+		res+="Precio: " + this.precio;
+		return res;
 	}
+	
 	
 }

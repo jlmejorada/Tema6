@@ -1,146 +1,139 @@
 package primerosherencia.ejercicio4;
 
-public class Electrodomestico implements Comparable<Electrodomestico> {
+public class Electrodomestico {
 
 	enum Color {
 		BLANCO, NEGRO, ROJO, AZUL, GRIS
-	};
-
+	}
+	
 	enum ConsumoEnergetico {
 		A, B, C, D, E, F
-	};
-
-	private Color color = Color.BLANCO;
-
-	private ConsumoEnergetico consumo = ConsumoEnergetico.F;
+	}
 
 	protected double precioBase = 100;
 
-	private double peso = 5;
+	protected Color colorElegido = Color.BLANCO;
+	
+	protected ConsumoEnergetico consumoElegido = ConsumoEnergetico.F;
+	
+	protected double peso=5;
 
 	public Electrodomestico() {
-
+		
 	}
-
+	
 	public Electrodomestico(double precioBase, double peso) {
-		if (precioBase > 0) {
+		if (precioBase>=100) {
 			this.precioBase = precioBase;
 		}
-		if (peso > 0) {
+		if (peso>=5) {
 			this.peso = peso;
 		}
 	}
 
-	public Electrodomestico(String color, char consumo, double precioBase, double peso) {
-		if (precioBase > 0) {
+	public Electrodomestico(double precioBase, String colorElegido, char consumoElegido, double peso) {
+		if (precioBase>=100) {
 			this.precioBase = precioBase;
 		}
-		if (peso > 0) {
+		comprobarColor(colorElegido);
+		comprobarConsumoEnergetico(consumoElegido);
+		if (peso>=5) {
 			this.peso = peso;
-
 		}
-		comprobarCosumoEnergetico(consumo);
-		comprobarColor(color);
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public ConsumoEnergetico getConsumo() {
-		return consumo;
 	}
 
 	public double getPrecioBase() {
 		return precioBase;
 	}
 
+	public Color getColorElegido() {
+		return colorElegido;
+	}
+
+	public ConsumoEnergetico getConsumoElegido() {
+		return consumoElegido;
+	}
+
 	public double getPeso() {
 		return peso;
 	}
-
-	public void comprobarCosumoEnergetico(char letra) {
-		String caracter = Character.toString(letra).toUpperCase();
-		try {
-			this.consumo = ConsumoEnergetico.valueOf(caracter);
-		} catch (IllegalArgumentException e) {
-			this.consumo = ConsumoEnergetico.F;
+	
+	private void comprobarConsumoEnergetico(char letra) {
+		letra=Character.toUpperCase(letra);
+		switch (letra) {
+		case 'A' ->{
+			this.consumoElegido = ConsumoEnergetico.A;
 		}
-
+		case 'B' ->{
+			this.consumoElegido = ConsumoEnergetico.B;
+		}
+		case 'C' ->{
+			this.consumoElegido = ConsumoEnergetico.C;
+		}
+		case 'D' ->{
+			this.consumoElegido = ConsumoEnergetico.D;
+		}
+		case 'E' ->{
+			this.consumoElegido = ConsumoEnergetico.E;
+		}
+		default ->{
+			this.consumoElegido = ConsumoEnergetico.F;
+		}
+		}
 	}
 	
-	public void comprobarColor(String color) {
-		try {
-			this.color = Color.valueOf(color.toUpperCase());
-		} catch (IllegalArgumentException e) {
-			this.color = Color.BLANCO;
+	private void comprobarColor(String color) {
+		color=color.toUpperCase();
+		switch (color) {
+		case "NEGRO" ->{
+			this.colorElegido = Color.NEGRO;
+		}
+		case "ROJO" ->{
+			this.colorElegido = Color.ROJO;
+		}
+		case "AZUL" ->{
+			this.colorElegido = Color.AZUL;
+		}
+		case "GRIS" ->{
+			this.colorElegido = Color.GRIS;
+		}
+		default ->{
+			this.colorElegido = Color.BLANCO;
+		}
 		}
 	}
 	
-	public void precioFinal() {
-		switch(consumo) {
+	void precioFinal() {
+		double res=this.precioBase;
+		switch (this.consumoElegido) {
 		case A ->{
-			this.precioBase+=100;
+			res+=100;
 		}
 		case B ->{
-			this.precioBase+=80;
+			res+=80;
 		}
 		case C ->{
-			this.precioBase+=60;
+			res+=60;
 		}
 		case D ->{
-			this.precioBase+=50;
+			res+=50;
 		}
 		case E ->{
-			this.precioBase+=30;
+			res+=30;
 		}
-		case F->{
-			this.precioBase+=10;
+		case F ->{
+			res+=10;
 		}
 		}
-		
 		if (this.peso>0 && this.peso<=19) {
-			this.precioBase+=10;
+			res+=10;
 		} else if (this.peso>=20 && this.peso<=49) {
-			this.precioBase+=50;
+			res+=50;
 		} else if (this.peso>=50 && this.peso<=79) {
-			this.precioBase+=80;
-		} else if (this.peso>80) {
-			this.precioBase+=100;
+			res+=80;
+		} else if (this.peso>=80) {
+			res+=100;
 		}
-		
+		this.precioBase=res;
 	}
-
-	@Override
-	public int compareTo(Electrodomestico el) {
-		int devuelve=0;
-		
-		if (this.precioBase<el.precioBase) {
-			devuelve = -1;
-		} else if (this.precioBase>el.precioBase) {
-			devuelve = 1;
-		}
-		
-		return devuelve;
-	}
-
-	@Override
-	public String toString() {
-		return "Electrodomestico [color=" + color + ", consumo=" + consumo + ", precioBase=" + precioBase + ", peso="
-				+ peso + "]";
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		boolean esIgual=false;
-		Electrodomestico objeto = (Electrodomestico) obj;
-		if (this.peso == objeto.peso) {
-			esIgual=true;
-		}
-		
-		return esIgual;
-	}
-	
-	
-	
 }

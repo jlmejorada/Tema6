@@ -4,10 +4,10 @@ public class Perecedero extends Producto {
 
 	private int diasACaducar=0;
 
-	public Perecedero(String nombre, double d, int diasACaducar) {
-		super(nombre, d);
-		if (diasACaducar>0) {
-			this.diasACaducar = diasACaducar;			
+	public Perecedero(String nombre, double precio, int diasACaducar) {
+		super(nombre, precio);
+		if (diasACaducar>1) {
+			this.diasACaducar = diasACaducar;
 		}
 	}
 
@@ -16,29 +16,36 @@ public class Perecedero extends Producto {
 	}
 
 	public void setDiasACaducar(int diasACaducar) {
-		if (diasACaducar>0) {
-			this.diasACaducar = diasACaducar;			
+		if (diasACaducar>1) {
+			this.diasACaducar = diasACaducar;
 		}
 	}
 	
-	@Override
-	public String toString() {
-		String res=super.toString() + " Días para caducar: " + this.diasACaducar ;
+	public double calcular(int cantidad) {
+		double res=0;
+		double precio=super.calcular(cantidad);
+		switch (this.diasACaducar) {
+		case 1->{
+			res=precio/4;
+		}
+		case 2->{
+			res=precio/3;
+		}
+		case 3->{
+			res=precio/2;
+		}
+		default->{
+			res=precio;
+		}
+		}
 		return res;
 	}
 	
 	@Override
-	public double calcular(int productos) {
-		double precio=super.calcular(productos);
-		double precioFinal=precio;
-		if (this.diasACaducar==3) {
-			precioFinal=precio/2;
-		} else if (this.diasACaducar==2) {
-			precioFinal=precio/3;
-		} else if (this.diasACaducar==1) {
-			precioFinal=precio/3;
-		}
-		return precioFinal;
+	public String toString() {
+		String res=super.toString();
+		res+="\n" + "Días a caducar: " + this.diasACaducar;
+		return res;
 	}
 	
 }
