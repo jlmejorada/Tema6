@@ -1,6 +1,5 @@
 package primerosherencia.ejercicio4;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
@@ -8,21 +7,19 @@ public class Main {
 	static Electrodomestico[] lista = new Electrodomestico[4];
 	
 	public static void main(String[] args) {
-
-		double precioLavadora=0;
-		
-		double precioTelevision=0;
-		
 		double precioTotal=0;
 		
+		double precioLavadora=0;
+		
+		double precioTelevisor=0;
 		
 		lista[0]= new Electrodomestico(15, 30);
 		
-		lista[1]= new Electrodomestico("VERDE", 'B', 200, 25);
+		lista[1]= new Electrodomestico(200, "BLANCO", 'B', 50);
 
-		lista[2] = new Lavadora("Verde", 'B', 200, 25, 25);
+		lista[2] = new Lavadora(150, "VerDe", 'C', 150, 15);
 		
-		lista[3] = new Television("Verde", 'B', 200, 25, 45, true);
+		lista[3] = new Televisor(300, "NEGRO", 'B', 40, 30, true);
 	
 		for (Electrodomestico cosa :lista) {
 			cosa.precioFinal();
@@ -30,22 +27,17 @@ public class Main {
 			precioTotal+=cosa.getPrecioBase();
 			if (cosa instanceof Lavadora) {
 				precioLavadora+=cosa.getPrecioBase();
-			} else if (cosa instanceof Television) {
-				precioTelevision+=cosa.getPrecioBase();
+			} else if (cosa instanceof Televisor) {
+				precioTelevisor+=cosa.getPrecioBase();
 			}
 		}
-		
-		
-		System.out.println(Arrays.toString(lista));
-		Arrays.sort(lista);
-		System.out.println(Arrays.toString(lista));		
 		
 		
 		System.out.println("El precio de todos los electrodomesticos es: " + precioTotal);
 		
 		System.out.println("El precio de todas las lavadoras es: " + precioLavadora);
 		
-		System.out.println("El precio de todas las televisores es: " + precioTelevision);
+		System.out.println("El precio de todas las televisores es: " + precioTelevisor);
 		
 		
 		

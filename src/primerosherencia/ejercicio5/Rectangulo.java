@@ -1,63 +1,59 @@
 package primerosherencia.ejercicio5;
 
-public class Rectangulo extends Poligono {
+public class Rectangulo extends Poligono{
 
+	private double lado1=0;
 	
-	private double lado1;
-	
-	private double lado2;
+	private double lado2=0;
 
-	
-	public Rectangulo(int numeroLados) {
-		super(numeroLados);
+	public Rectangulo() {
+		
 	}
 
-	public Rectangulo(int numeroLados, double lado1, double lado2) {
-		super(numeroLados);
-		if (lado1 > 0) {
+	public Rectangulo( double lado1, double lado2) {
+		super(4);
+		if (lado1>0) {
 			this.lado1 = lado1;
 		}
-		if (lado2 > 0) {
+		if (lado2>0) {
 			this.lado2 = lado2;
 		}
 	}
-	
+
 	public double getLado1() {
 		return lado1;
 	}
-	
-	public void setLado1(double lado1) {
-		if (lado1 > 0) {
-			this.lado1 = lado1;
-		}
-	}
-	
+
 	public double getLado2() {
 		return lado2;
 	}
-	
-	public void setLado2(double lado2) {
-		if (lado2 > 0) {
-			this.lado2 = lado2;
+
+	public void setLado1(double lado1) {
+		if (lado1>0){
+			this.lado1 = lado1;
 		}
 	}
-	
-	@Override
-	public double area() {
-		double area = 0;
 
-		area = lado1 * lado2;
-
-		return area;
+	public void setLado2(double lado2) {
+		if (lado2>0){
+			this.lado2 = lado2;
+		}
 	}
 	
 	@Override
 	public String toString() {
-		String cad = super.toString();
-		cad += "Lado 1: " + lado1 + "\n";
-		cad += "Lado 2: " + lado2 + "\n";
-		cad += "Area: " + area();
-
-		return cad;
+		String res="Poligono: Rectangulo \n";
+		res+=super.toString();
+		res+="\n Lado1: " + this.lado1;
+		res+="\n Lado2: " + this.lado2;
+		res+="\n Area: " + area();
+		return res;
 	}
+
+	@Override
+	public double area() {
+		double res=lado1*lado2;
+		return res;
+	}
+	
 }
